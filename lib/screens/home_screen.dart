@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app/screens/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -17,9 +19,13 @@ class Homescreen extends StatelessWidget {
             var response = await http.get(url);
             print('Response status: ${response.statusCode}');
             print('Response body: ${response.body}');
+            var data = jsonDecode(response.body);
+            String quote = (data["quotes"][0]["text"]);
+            String author = (data["quotes"][0]["author"]);
 
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => Secondscreen()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    Secondscreen(quoteText: quote, Author: author)));
           },
           child: Text('go to next screen'),
         ),

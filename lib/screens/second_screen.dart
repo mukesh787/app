@@ -5,22 +5,21 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class Secondscreen extends StatelessWidget {
-  const Secondscreen({super.key});
+  String quoteText;
+  String Author;
+
+  Secondscreen({
+    Key? key,
+    required this.Author,
+    required this.quoteText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              /*Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Homescreen()));*/
-              Navigator.of(context).pop();
-            },
-            child: Text('go back'),
-          ),
-        ),
+        appBar: AppBar(),
+        body: Column(children: [Text(quoteText), Text(Author)]),
       ),
     );
   }
