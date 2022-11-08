@@ -19,7 +19,21 @@ class Secondscreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
-        body: Column(children: [Text(quoteText), Text(Author)]),
+        body: Column(children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "-$quoteText",
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Align(
+              alignment: Alignment.bottomRight,
+              child: Text(
+                "-$Author",
+                style: TextStyle(fontSize: 8),
+              ))
+        ]),
       ),
     );
   }
